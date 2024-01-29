@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Golden Donz</title>
+    <!-- Link to your stylesheet if needed -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <div class="container">
+       
+        <div id="qrcode"></div>
+
+       
+    </div>
+
+    <!-- Include the qrcode.min.js file -->
+    <script src="qrcode.min.js"></script>
+
+    <!-- Script to generate QR code -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var qrCodeCanvas = document.getElementById("qrcode");
+            var qrCode = new QRCode(qrCodeCanvas, {
+                text: "file:///Users/sachinkaabeysekera/Documents/Donz%20Rugby/HomePage.html",
+                width: 256,
+                height: 256
+            });
+        });
+    </script>
+
+</body>
+
+</html>

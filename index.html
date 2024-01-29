@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donz Rugby</title>
+    <link rel="stylesheet" href="index4.css">
+</head>
+
+<body>
+
+    <div class="bubble"></div>
+    <div class="wraper">
+
+        
+        <form id="myForm3" name="contact-form"> 
+            <h2>Golden Donz</h2>
+
+            <input type="hidden" name="Timestamp" id="timestamp">
+            
+            <div class="input-box">
+                <input type="text" name="First Name" id="firstName" required>
+                <label>First Name</label>
+            </div>
+
+            <div class="input-box">
+                <input type="text" name="Last Name" id="lastName" required>
+                <label>Last Name</label>
+            </div>
+
+            <div class="input-box">
+                <input type="email" name="E-mail" required>
+                <label>Email</label>
+            </div>
+
+            <div class="input-box">
+                <input type="text" name="Occupation" id="occupation" required>
+                <label>Occupation</label>
+            </div>
+
+            <div class="input-box">
+                <input type="text" name="Batch (Eg: 1980,1982 etc.)" id="batch" required>
+                <label>Batch (Eg: 1980, 1982, etc.)</label>
+            </div>
+
+            <div>
+                <button type="submit" value="Submit" id="submit">Submit</button>
+            </div>
+            <div>
+                <button type="button" onclick="goBack()">Back</button>
+            </div>
+
+     
+        </form> 
+         <p id="response-message"></p>
+     </div>
+        <script src="index.js"></script>
+   
+       
+</body>
+
+</html>
+
