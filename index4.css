@@ -127,21 +127,6 @@ button:hover {
     background: #FFC700; /* Darker shade for hover effect */
 }
 
-.register-link {
-    color: #0000;
-    font-size: 13px;
-    text-align: center;
-}
-
-.register-link a {
-    color: #0000;
-    text-decoration: none;
-}
-
-.register-link a:hover {
-    text-decoration: underline;
-}
-
 @keyframes animShape {
     100% {
         transform: translate(250px, 50px) rotate(-10deg);
