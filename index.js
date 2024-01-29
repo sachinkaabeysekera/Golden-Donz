@@ -85,6 +85,7 @@ function showVideo() {
                 if (response.ok) {
                     responseMessage.innerHTML = "Registered Successfully!";
                     responseMessage.style.color = "green";
+                    showVideo();
 
                 } else {
                     responseMessage.innerHTML = "Try Again!";
