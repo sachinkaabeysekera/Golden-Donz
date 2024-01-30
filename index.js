@@ -64,7 +64,7 @@ function showVideo() {
         }
 
   
-const scriptURL = 'https://script.google.com/macros/s/AKfycbzvwUb9h42ChyYquxjRcckv5WphjMshl4nD1r8GxEigp6YWR2U93XNObKc8J6qKTF-d/exec';
+const scriptURL = 'https://script.google.com/macros/library/d/1vK9yClRCzmf2o0CqqI2SQ2rLLQUZ6dWEl8yxPRLVuWlrhmZLKwHztuMs/6';
     const form = document.forms['contact-form'];
     const responseMessage = document.getElementById('response-message');
 
