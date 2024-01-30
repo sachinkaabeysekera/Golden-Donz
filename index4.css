@@ -169,3 +169,28 @@ button:hover {
     src: url('Tw_Cen_MT.ttf') format('truetype');
 }
 
+.input-box select {
+    width: 70%;
+    height: 50px;
+    background: #000000; /* Background color for the drop-down box */
+    border: none;
+    outline: none;
+    color: #FFD700; /* Font color for the drop-down options */
+    font-size: 1em;
+    font-family: 'Tw Cen MT';
+}
+
+/* Optional: Style the dropdown arrow */
+.input-box select::-ms-expand {
+    display: none;
+}
+
+.input-box select:after {
+    content: '\25BC'; /* Unicode character for the dropdown arrow */
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    color: #FFD700; /* Font color for the dropdown arrow */
+}
+
