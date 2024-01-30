@@ -64,7 +64,7 @@ function showVideo() {
         }
 
   
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbzvwUb9h42ChyYquxjRcckv5WphjMshl4nD1r8GxEigp6YWR2U93XNObKc8J6qKTF-d/exec';
+const scriptURL = 'https://script.google.com/macros/s/AKfycbzvwUb9h42ChyYquxjRcckv5WphjMshl4nD1r8GxEigp6YWR2U93XNObKc8J6qKTF-d/exec';
     const form = document.forms['contact-form'];
     const responseMessage = document.getElementById('response-message');
 
@@ -80,7 +80,7 @@ function showVideo() {
         
 
 
-fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+    fetch(scriptURL, { method: 'POST', body: new FormData(form) })
     .then(response => {
         console.log('Response status:', response.status);
         console.log('Response text:', response.statusText);
