@@ -81,7 +81,9 @@ function createVideoElement(source) {
     return video;
 }
 
- 
+function showSuccessPopup() {
+    alert("You have been Registered Successfully! Please go Back and Click the Already Registered button.");
+}
   
 const scriptURL = 'https://script.google.com/macros/s/AKfycbwk5hmnLxiKFQOLm1ALKsHtbCdjTKc6wJJdbj1f7whnJFIAy-HqSiNWXQmTUGKsSJUk5Q/exec';
     const form = document.forms['contact-form'];
@@ -103,6 +105,7 @@ const scriptURL = 'https://script.google.com/macros/s/AKfycbwk5hmnLxiKFQOLm1ALKs
                 if (response.ok) {
                     responseMessage.innerHTML = "Registered Successfully!";
                     responseMessage.style.color = "green";
+                showSuccessPopup()
 
 
                 } else {
