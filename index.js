@@ -105,6 +105,7 @@ const scriptURL = 'https://script.google.com/macros/s/AKfycbwk5hmnLxiKFQOLm1ALKs
                 if (response.ok) {
                     responseMessage.innerHTML = "Registered Successfully!";
                     responseMessage.style.color = "green";
+
                 showSuccessPopup()
 
 
