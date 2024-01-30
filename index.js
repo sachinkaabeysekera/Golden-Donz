@@ -79,23 +79,21 @@ const scriptURL = 'https://script.google.com/macros/s/AKfycbzvwUb9h42ChyYquxjRcc
 
         
 
+   fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+            .then(response => {
+                if (response.ok) {
+                    responseMessage.innerHTML = "Registered Successfully!";
+                    responseMessage.style.color = "green";
 
-    fetch(scriptURL, { method: 'POST', body: new FormData(form) })
-    .then(response => {
-        console.log('Response status:', response.status);
-        console.log('Response text:', response.statusText);
 
-        if (response.ok) {
-            responseMessage.innerHTML = "Registered Successfully!";
-            responseMessage.style.color = "green";
-        } else {
-            responseMessage.innerHTML = "Try Again!";
-            responseMessage.style.color = "red";
-        }
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        responseMessage.innerHTML = "Try Again!";
-        responseMessage.style.color = "red";
+                } else {
+                    responseMessage.innerHTML = "Try Again!";
+                    responseMessage.style.color = "red";
+                }
+            })
+            .catch(error => {
+                responseMessage.innerHTML = "Try Again!";
+                responseMessage.style.color = "red";
+            });
     });
 
