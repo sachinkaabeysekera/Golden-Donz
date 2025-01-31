@@ -86,7 +86,7 @@ function showSuccessPopup() {
 }
   
 const scriptURL = 'https://script.google.com/macros/s/AKfycbyRwHPZfW6eRy9kaufmGNswS8LnmUEOg2mtxfbnUt2XJiHLmdzYk10f-QVUCZJyCwDo2Q/exec';
-    const form = document.forms['contact-form-1'];
+    const form = document.forms['contact-form'];
     const responseMessage = document.getElementById('response-message');
 
     form.addEventListener('submit', e => {
