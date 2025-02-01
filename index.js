@@ -12,20 +12,21 @@ function lines() {
     setTimeout(function () {
       document.body.removeChild(e);
     }, 5000);
-  }
-  setInterval(function () {
+}
+setInterval(function () {
     lines();
-  }, 200);
+}, 200);
 
-  function goBack() {
-            window.location.href = 'HomePage.html';
-        }
+function goBack() {
+    window.location.href = 'HomePage.html';
+}
+
 function gotoRegistration() {
-            // Redirect to index.html
-            window.location.href = 'index.html';
-        }
+    // Redirect to index.html
+    window.location.href = 'index.html';
+}
 
-        // Function to be called when "Already Registered!" button is clicked
+// Function to be called when "Already Registered!" button is clicked
 function showVideo() {
     // Hide the form
     document.getElementById('myForm').style.display = 'none';
@@ -84,39 +85,37 @@ function createVideoElement(source) {
 function showSuccessPopup() {
     alert("You have been Registered Successfully! Please go Back and Click the Already Registered button.");
 }
-  
+
+// Update the scriptURL with the new Google Apps Script URL
 const scriptURL = 'https://script.google.com/macros/s/AKfycbzg_L1-0uxgJx7aCnma9w-G7eIflfThObOdK9A8y2Fut1-DdKM8Y_TTTFG76x-sjgWMSQ/exec';
-    const form = document.forms['contact-form'];
-    const responseMessage = document.getElementById('response-message');
+const form = document.forms['contact-form'];
+const responseMessage = document.getElementById('response-message');
 
-    form.addEventListener('submit', e => {
-        e.preventDefault();
+form.addEventListener('submit', e => {
+    e.preventDefault();
 
-        const timestamp = new Date().toLocaleString();
+    const timestamp = new Date().toLocaleString();
 
     // Set the value of the hidden timestamp input field
     const timestampField = document.getElementById('timestamp');
     timestampField.value = timestamp;
 
-        
+    // Send form data to the new Google Apps Script
+    fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+        .then(response => {
+            if (response.ok) {
+                responseMessage.innerHTML = "Registered Successfully!";
+                responseMessage.style.color = "green";
 
-   fetch(scriptURL, { method: 'POST', body: new FormData(form) })
-            .then(response => {
-                if (response.ok) {
-                    responseMessage.innerHTML = "Registered Successfully!";
-                    responseMessage.style.color = "green";
+                showSuccessPopup();
 
-                showSuccessPopup()
-
-
-                } else {
-                    responseMessage.innerHTML = "Try Again!" ;
-                    responseMessage.style.color = "red";
-                }
-            })
-            .catch(error => {
-                responseMessage.innerHTML = "Try Again!" ;
+            } else {
+                responseMessage.innerHTML = "Try Again!";
                 responseMessage.style.color = "red";
-            });
-    });
-
+            }
+        })
+        .catch(error => {
+            responseMessage.innerHTML = "Try Again!";
+            responseMessage.style.color = "red";
+        });
+});
