@@ -110,12 +110,12 @@ const scriptURL = 'https://script.google.com/macros/s/AKfycbxEtd6790tzaWIkzi7w1X
 
 
                 } else {
-                    responseMessage.innerHTML = response.statusText ;
+                    responseMessage.innerHTML = "Try Again!" ;
                     responseMessage.style.color = "red";
                 }
             })
             .catch(error => {
-                responseMessage.innerHTML = response.statusText ;
+                responseMessage.innerHTML = "Try Again!" ;
                 responseMessage.style.color = "red";
             });
     });
