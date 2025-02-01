@@ -100,7 +100,7 @@ const scriptURL = 'https://script.google.com/macros/s/AKfycbxEtd6790tzaWIkzi7w1X
 
         
 
-   fetch(scriptURL, { method: 'POST', body: new FormData(myForm) })
+   fetch(scriptURL, { method: 'POST', body: new FormData(myForm4) })
             .then(response => {
                 if (response.ok) {
                     responseMessage.innerHTML = "Registered Successfully!";
