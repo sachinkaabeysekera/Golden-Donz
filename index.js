@@ -95,11 +95,14 @@ form.addEventListener('submit', e => {
     e.preventDefault();
 
     const timestamp = new Date().toLocaleString();
-
-    // Set the value of the hidden timestamp input field
-    const timestampField = document.getElementById('timestamp');
-    timestampField.value = timestamp;
-
+document.getElementById('timestamp').value = timestamp;
+document.getElementById('firstName').value = firstName;
+document.getElementById('lastName').value = lastName;
+document.getElementById('email').value = email;
+document.getElementById('batch').value = batch;
+document.getElementById('designation').value = designation;
+document.getElementById('number').value = number;
+document.getElementById('employer').value = employer;   
     // Send form data to the new Google Apps Script
     fetch(scriptURL, { method: 'POST', body: new FormData(form) })
         .then(response => {
