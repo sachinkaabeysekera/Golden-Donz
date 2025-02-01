@@ -115,7 +115,7 @@ const scriptURL = 'https://script.google.com/macros/s/AKfycbyqeUdYFFiLiBPcF9hxiF
                 }
             })
             .catch(error => {
-                responseMessage.innerHTML = "Try Again!";
+                responseMessage.innerHTML = error.message ;
                 responseMessage.style.color = "red";
             });
     });
