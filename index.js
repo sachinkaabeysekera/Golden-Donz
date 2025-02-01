@@ -94,15 +94,14 @@ const responseMessage = document.getElementById('response-message');
 form.addEventListener('submit', e => {
     e.preventDefault();
 
-    const timestamp = new Date().toLocaleString();
-document.getElementById('timestamp').value = timestamp;
-document.getElementById('firstName').value = firstName;
-document.getElementById('lastName').value = lastName;
-document.getElementById('email').value = email;
-document.getElementById('batch').value = batch;
-document.getElementById('designation').value = designation;
-document.getElementById('number').value = number;
-document.getElementById('employer').value = employer;   
+        document.getElementById('timestamp').value = timestamp;
+        document.getElementById('firstName').value = firstName;
+        document.getElementById('lastName').value = lastName;
+        document.getElementById('email').value = email;
+        document.getElementById('batch').value = batch;
+        document.getElementById('designation').value = designation;
+        document.getElementById('number').value = number;
+        document.getElementById('employer').value = employer;   
     // Send form data to the new Google Apps Script
     fetch(scriptURL, { method: 'POST', body: new FormData(form) })
         .then(response => {
