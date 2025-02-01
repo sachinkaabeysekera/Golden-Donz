@@ -87,7 +87,7 @@ function showSuccessPopup() {
 }
 
 // Update the scriptURL with the new Google Apps Script URL
-const scriptURL = 'https://script.google.com/macros/s/AKfycbxEtd6790tzaWIkzi7w1XPR0nryrZQPWQ1WYQynH_17LsTMtoGxjLTIsEz3cBV88vEPDg/exec';
+const scriptURL = 'https://script.google.com/macros/s/AKfycbyqdDh4O3CDpKPhO8BnB2yPsFbzsSBJKvM9s3uYIaU35WooxXZCFDswfFOE1eFbR3ZqVA/exec';
 const form = document.forms['contact-form'];
 const responseMessage = document.getElementById('response-message');
 
