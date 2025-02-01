@@ -85,7 +85,7 @@ function showSuccessPopup() {
     alert("You have been Registered Successfully! Please go Back and Click the Already Registered button.");
 }
   
-const scriptURL = "https://script.google.com/macros/s/AKfycbyRwHPZfW6eRy9kaufmGNswS8LnmUEOg2mtxfbnUt2XJiHLmdzYk10f-QVUCZJyCwDo2Q/exec";
+const scriptURL = 'https://script.google.com/macros/library/d/1vK9yClRCzmf2o0CqqI2SQ2rLLQUZ6dWEl8yxPRLVuWlrhmZLKwHztuMs/6';
     const form = document.forms['contact-form'];
     const responseMessage = document.getElementById('response-message');
 
