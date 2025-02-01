@@ -103,7 +103,7 @@ form.addEventListener('submit', e => {
         document.getElementById('number').value = number;
         document.getElementById('employer').value = employer;   
     // Send form data to the new Google Apps Script
-    fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+    fetch(scriptURL, { method: 'POST', body: new FormData(document.forms['contact-form']) })
         .then(response => {
             console.log("Response Status:", response.status); // Log the response status
 
