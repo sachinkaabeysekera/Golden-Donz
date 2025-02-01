@@ -114,8 +114,22 @@ form.addEventListener('submit', e => {
                 responseMessage.style.color = "red";
             }
         })
-        .catch(error => {
+        fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+    .then(response => {
+        console.log("Response Status:", response.status);
+        if (response.ok) {
+            responseMessage.innerHTML = "Registered Successfully!";
+            responseMessage.style.color = "green";
+            showSuccessPopup();
+        } else {
             responseMessage.innerHTML = "Try Again!";
             responseMessage.style.color = "red";
-        });
+        }
+    })
+    .catch(error => {
+        console.log("Error occurred:", error);
+        responseMessage.innerHTML = "Try Again!";
+        responseMessage.style.color = "red";
+    });
+
 });
