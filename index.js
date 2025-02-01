@@ -29,7 +29,7 @@ function gotoRegistration() {
 // Function to be called when "Already Registered!" button is clicked
 function showVideo() {
     // Hide the form
-    document.getElementById('myForm').style.display = 'none';
+    document.getElementById('myForm4').style.display = 'none';
 
     // Show the video container
     const videoContainer = document.createElement('div');
