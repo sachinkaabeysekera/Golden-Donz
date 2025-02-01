@@ -81,33 +81,42 @@ function createVideoElement(source) {
     return video;
 }
 
-const form = document.forms['contact-form'];
-const responseMessage = document.getElementById('response-message');
+function showSuccessPopup() {
+    alert("You have been Registered Successfully! Please go Back and Click the Already Registered button.");
+}
+  
 const scriptURL = 'https://script.google.com/macros/s/AKfycbyqeUdYFFiLiBPcF9hxiFR4ZknesEpT9IGOKlpy2kGAnq281FQd-Cev4FDiUPkZx3_TpA/exec';
+    const form = document.forms['contact-form'];
+    const responseMessage = document.getElementById('response-message');
 
-form.addEventListener('submit', e => {
-    e.preventDefault();
+    form.addEventListener('submit', e => {
+        e.preventDefault();
 
-    const timestamp = new Date().toLocaleString();
+        const timestamp = new Date().toLocaleString();
+
+    // Set the value of the hidden timestamp input field
     const timestampField = document.getElementById('timestamp');
     timestampField.value = timestamp;
 
-    fetch(scriptURL, { method: 'POST', body: new FormData(form) })
-        .then(response => response.text())
-        .then(result => {
-            if (result === 'registered_successfully') {
-                displayMessage("Registered Successfully!", "green");
-                showSuccessPopup();
-            } else if (result === 'already_registered') {
-                displayMessage("Already Registered!", "orange");
-            } else {
-                displayMessage("Try Again!", "red");
-            }
-        })})
         
 
-function showSuccessPopup() {
-    alert("You have been registered successfully! Please go back and click the Already Registered button.");
-}
+   fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+            .then(response => {
+                if (response.ok) {
+                    responseMessage.innerHTML = "Registered Successfully!";
+                    responseMessage.style.color = "green";
 
+                showSuccessPopup()
+
+
+                } else {
+                    responseMessage.innerHTML = error.message ;
+                    responseMessage.style.color = "red";
+                }
+            })
+            .catch(error => {
+                responseMessage.innerHTML = error.message ;
+                responseMessage.style.color = "red";
+            });
+    });
 
