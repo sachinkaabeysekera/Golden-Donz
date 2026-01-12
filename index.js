@@ -86,24 +86,40 @@ function showSuccessPopup() {
   alert("You have been Registered Successfully! Please go Back and Click the Already Registered button.");
 }
 
-const form = document.getElementById('contact-form');
-const responseMessage = document.getElementById('response-message');
-const scriptURL = 'https://script.google.com/macros/s/AKfycbyCZG4k2PAkxAAxF53660bTIye_krWNkfRWAwxGru0ion0bPruYXtn_tn1qYvXAB-rt2g/exec';
+const form = document.getElementById("contact-form");
+const responseMessage = document.getElementById("response-message");
 
-form.addEventListener('submit', e => {
+// Replace with your deployed Web App URL
+const scriptURL = "https://script.google.com/macros/s/AKfycbyCZG4k2PAkxAAxF53660bTIye_krWNkfRWAwxGru0ion0bPruYXtn_tn1qYvXAB-rt2g/exec";
+
+form.addEventListener("submit", e => {
   e.preventDefault();
 
+  document.getElementById("timestamp").value = new Date().toISOString();
+
   fetch(scriptURL, {
-    method: 'POST',
+    method: "POST",
     body: new FormData(form)
   })
   .then(res => res.text())
   .then(text => {
     console.log("Server response:", text);
-    responseMessage.innerHTML = text;
+
+    if (text === "registered_successfully") {
+      responseMessage.innerHTML = "Registered Successfully!";
+      responseMessage.style.color = "green";
+      form.reset();
+    } else if (text === "already_registered") {
+      responseMessage.innerHTML = "Mobile number already registered!";
+      responseMessage.style.color = "yellow";
+    } else {
+      responseMessage.innerHTML = "Try Again!";
+      responseMessage.style.color = "red";
+    }
   })
   .catch(err => {
-    console.error(err);
+    console.error("Fetch error:", err);
     responseMessage.innerHTML = "Try Again!";
+    responseMessage.style.color = "red";
   });
 });
