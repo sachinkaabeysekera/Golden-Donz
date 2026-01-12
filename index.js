@@ -83,47 +83,46 @@ function createVideoElement(source) {
 }
 
 function showSuccessPopup() {
-    alert("You have been Registered Successfully! Please go Back and Click the Already Registered button.");
+  alert("You have been Registered Successfully! Please go Back and Click the Already Registered button.");
 }
 
-// Update the scriptURL with the new Google Apps Script URL
 const scriptURL = 'https://script.google.com/macros/s/AKfycbxkb3lM-TeYn-261jr6L9teWywwbgxLEL66NXEBshSpgltBNdDCty56h1jRpgxfMt3uBQ/exec';
 const form = document.forms['contact-form'];
 const responseMessage = document.getElementById('response-message');
 
 form.addEventListener('submit', e => {
-    e.preventDefault();
+  e.preventDefault();
 
-        document.getElementById('timestamp').value = timestamp;
-        document.getElementById('firstName').value = firstName;
-        document.getElementById('lastName').value = lastName;
-        document.getElementById('email').value = email;
-        document.getElementById('batch').value = batch;
-        document.getElementById('designation').value = designation;
-        document.getElementById('number').value = number;
-        document.getElementById('employer').value = employer;   
-    // Send form data to the new Google Apps Script
-    fetch(scriptURL, { method: 'POST', body: new FormData(document.forms['contact-form']) })
-        .then(response => {
-            console.log("Response Status:", response.status); // Log the response status
+  // ✅ Set timestamp correctly
+  document.getElementById('timestamp').value = new Date().toISOString();
 
-            if (response.ok) {
-                responseMessage.innerHTML = "Registered Successfully!";
-                responseMessage.style.color = "green";
-                showSuccessPopup();
-            } else {
-                responseMessage.innerHTML = "Try Again!";
-                responseMessage.style.color = "red";
-            }
-        })
-        .catch(error => {
-            console.log("Error occurred:", error); // Log any errors
-            responseMessage.innerHTML = "Try Again!";
-            responseMessage.style.color = "red";
-        });
+  // ✅ Collect values automatically
+  const formData = new FormData(form);
+
+  fetch(scriptURL, {
+    method: 'POST',
+    body: formData
+  })
+  .then(res => res.text())
+  .then(text => {
+    console.log("Server response:", text);
+
+    if (text === 'registered_successfully') {
+      responseMessage.innerHTML = "Registered Successfully!";
+      responseMessage.style.color = "green";
+      showSuccessPopup();
+      form.reset();
+    } else if (text === 'already_registered') {
+      responseMessage.innerHTML = "Mobile number already registered!";
+      responseMessage.style.color = "orange";
+    } else {
+      responseMessage.innerHTML = "Try Again!";
+      responseMessage.style.color = "red";
+    }
+  })
+  .catch(err => {
+    console.error(err);
+    responseMessage.innerHTML = "Try Again!";
+    responseMessage.style.color = "red";
+  });
 });
-
-
-
-
-
