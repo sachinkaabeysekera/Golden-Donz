@@ -88,40 +88,22 @@ function showSuccessPopup() {
 
 const form = document.getElementById('contact-form');
 const responseMessage = document.getElementById('response-message');
-
-// Replace with your deployed Web App URL
 const scriptURL = 'https://script.google.com/macros/s/AKfycbyCZG4k2PAkxAAxF53660bTIye_krWNkfRWAwxGru0ion0bPruYXtn_tn1qYvXAB-rt2g/exec';
 
 form.addEventListener('submit', e => {
   e.preventDefault();
 
-  fetch(scriptURL, { method: 'POST', body: new FormData(form) })
-    .then(res => res.text())
-    .then(text => {
-      console.log("Server response:", text);
-
-      if(text === 'registered_successfully'){
-        responseMessage.innerHTML = "Registered Successfully!";
-        responseMessage.style.color = "green";
-        alert("You have been registered successfully!");
-        form.reset();
-      } else if(text === 'already_registered'){
-        responseMessage.innerHTML = "Mobile number already registered!";
-        responseMessage.style.color = "orange";
-      } else if(text === 'invalid_request'){
-        responseMessage.innerHTML = "Invalid request. Try again.";
-        responseMessage.style.color = "red";
-      } else if(text === 'spreadsheet_access_error' || text === 'sheet_not_found'){
-        responseMessage.innerHTML = "Server error. Contact admin.";
-        responseMessage.style.color = "red";
-      } else {
-        responseMessage.innerHTML = "Try Again!";
-        responseMessage.style.color = "red";
-      }
-    })
-    .catch(err => {
-      console.error("Fetch error:", err);
-      responseMessage.innerHTML = "Try Again!";
-      responseMessage.style.color = "red";
-    });
+  fetch(scriptURL, {
+    method: 'POST',
+    body: new FormData(form)
+  })
+  .then(res => res.text())
+  .then(text => {
+    console.log("Server response:", text);
+    responseMessage.innerHTML = text;
+  })
+  .catch(err => {
+    console.error(err);
+    responseMessage.innerHTML = "Try Again!";
+  });
 });
