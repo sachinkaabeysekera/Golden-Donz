@@ -87,7 +87,7 @@ function showSuccessPopup() {
 }
 
 // Update the scriptURL with the new Google Apps Script URL
-const scriptURL = 'https://script.google.com/macros/s/AKfycbw268Kaumb7fI_leaYAsUy2cr4vEalUzLYXCIvlA06CqaGPQZxrfgeQbRac1wD1P94p-w/exec';
+const scriptURL = 'https://script.google.com/macros/s/AKfycbxkb3lM-TeYn-261jr6L9teWywwbgxLEL66NXEBshSpgltBNdDCty56h1jRpgxfMt3uBQ/exec';
 const form = document.forms['contact-form'];
 const responseMessage = document.getElementById('response-message');
 
@@ -122,6 +122,7 @@ form.addEventListener('submit', e => {
             responseMessage.style.color = "red";
         });
 });
+
 
 
 
