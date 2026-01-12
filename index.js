@@ -105,29 +105,27 @@ form.addEventListener('submit', e => {
     }
 
     // Send to Google Apps Script
-    fetch(scriptURL, {
-        method: 'POST',
-        body: formData
-    })
-    .then(res => res.text())
-    .then(text => {
-        console.log('Server response:', text);
-        if(text === 'registered_successfully'){
-            responseMessage.innerHTML = "Registered Successfully!";
-            responseMessage.style.color = "green";
-            alert("You have been Registered Successfully!");
-            form.reset();
-        } else if(text === 'already_registered'){
-            responseMessage.innerHTML = "Mobile number already registered!";
-            responseMessage.style.color = "orange";
-        } else {
-            responseMessage.innerHTML = "Try Again!";
-            responseMessage.style.color = "red";
-        }
-    })
-    .catch(err => {
-        console.error(err);
-        responseMessage.innerHTML = "Try Again!";
-        responseMessage.style.color = "red";
-    });
-});
+    fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+  .then(res => res.text()) // <-- read response as text
+  .then(text => {
+      console.log("Server response:", text); // check exactly what Apps Script returned
+
+      if(text === 'registered_successfully'){
+          responseMessage.innerHTML = "Registered Successfully!";
+          responseMessage.style.color = "green";
+          showSuccessPopup();
+          form.reset();
+      } else if(text === 'already_registered'){
+          responseMessage.innerHTML = "Mobile number already registered!";
+          responseMessage.style.color = "orange";
+      } else {
+          responseMessage.innerHTML = "Try Again!";
+          responseMessage.style.color = "red";
+      }
+  })
+  .catch(err => {
+      console.error("Fetch error:", err);
+      responseMessage.innerHTML = "Try Again!";
+      responseMessage.style.color = "red";
+  });
+
