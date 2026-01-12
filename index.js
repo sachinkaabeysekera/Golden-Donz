@@ -86,43 +86,48 @@ function showSuccessPopup() {
   alert("You have been Registered Successfully! Please go Back and Click the Already Registered button.");
 }
 
-const scriptURL = 'https://script.google.com/macros/s/AKfycbxkb3lM-TeYn-261jr6L9teWywwbgxLEL66NXEBshSpgltBNdDCty56h1jRpgxfMt3uBQ/exec';
 const form = document.forms['contact-form'];
+const scriptURL = 'https://script.google.com/macros/s/AKfycbxkb3lM-TeYn-261jr6L9teWywwbgxLEL66NXEBshSpgltBNdDCty56h1jRpgxfMt3uBQ/exec';
 const responseMessage = document.getElementById('response-message');
 
 form.addEventListener('submit', e => {
-  e.preventDefault();
+    e.preventDefault();
 
-  // ✅ Set timestamp correctly
-  document.getElementById('timestamp').value = new Date().toISOString();
+    // Set timestamp
+    document.getElementById('timestamp').value = new Date().toISOString();
 
-  // ✅ Collect values automatically
-  const formData = new FormData(form);
+    // Collect form data
+    const formData = new FormData(form);
 
-  fetch(scriptURL, {
-    method: 'POST',
-    body: formData
-  })
-  .then(res => res.text())
-  .then(text => {
-    console.log("Server response:", text);
-
-    if (text === 'registered_successfully') {
-      responseMessage.innerHTML = "Registered Successfully!";
-      responseMessage.style.color = "green";
-      showSuccessPopup();
-      form.reset();
-    } else if (text === 'already_registered') {
-      responseMessage.innerHTML = "Mobile number already registered!";
-      responseMessage.style.color = "orange";
-    } else {
-      responseMessage.innerHTML = "Try Again!";
-      responseMessage.style.color = "red";
+    // Optional: Debug - see all key/value pairs
+    for (let [key, value] of formData.entries()) {
+        console.log(key, value); // Should log actual text values, NOT [object HTMLInputElement]
     }
-  })
-  .catch(err => {
-    console.error(err);
-    responseMessage.innerHTML = "Try Again!";
-    responseMessage.style.color = "red";
-  });
+
+    // Send to Google Apps Script
+    fetch(scriptURL, {
+        method: 'POST',
+        body: formData
+    })
+    .then(res => res.text())
+    .then(text => {
+        console.log('Server response:', text);
+        if(text === 'registered_successfully'){
+            responseMessage.innerHTML = "Registered Successfully!";
+            responseMessage.style.color = "green";
+            alert("You have been Registered Successfully!");
+            form.reset();
+        } else if(text === 'already_registered'){
+            responseMessage.innerHTML = "Mobile number already registered!";
+            responseMessage.style.color = "orange";
+        } else {
+            responseMessage.innerHTML = "Try Again!";
+            responseMessage.style.color = "red";
+        }
+    })
+    .catch(err => {
+        console.error(err);
+        responseMessage.innerHTML = "Try Again!";
+        responseMessage.style.color = "red";
+    });
 });
