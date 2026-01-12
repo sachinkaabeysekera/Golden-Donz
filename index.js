@@ -87,7 +87,7 @@ function showSuccessPopup() {
 }
 
 const form = document.forms['contact-form'];
-const scriptURL = 'https://script.google.com/macros/s/AKfycbxkb3lM-TeYn-261jr6L9teWywwbgxLEL66NXEBshSpgltBNdDCty56h1jRpgxfMt3uBQ/exec';
+const scriptURL = 'https://script.google.com/macros/s/AKfycbyCZG4k2PAkxAAxF53660bTIye_krWNkfRWAwxGru0ion0bPruYXtn_tn1qYvXAB-rt2g/exec';
 const responseMessage = document.getElementById('response-message');
 
 form.addEventListener('submit', e => {
@@ -128,4 +128,5 @@ form.addEventListener('submit', e => {
       responseMessage.innerHTML = "Try Again!";
       responseMessage.style.color = "red";
   });
+
 
