@@ -111,8 +111,8 @@ form.addEventListener("submit", e => {
       responseMessage.style.color = "green";
       form.reset();
     } else if (text === "already_registered") {
-      responseMessage.innerHTML = "Mobile number already registered!";
-      responseMessage.style.color = "orange";
+      responseMessage.innerHTML = "Already Registered!";
+      responseMessage.style.color = "yellow";
     } else {
       responseMessage.innerHTML = "Try Again!";
       responseMessage.style.color = "red";
@@ -124,5 +124,6 @@ form.addEventListener("submit", e => {
     responseMessage.style.color = "red";
   });
 });
+
 
 
