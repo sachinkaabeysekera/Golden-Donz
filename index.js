@@ -88,7 +88,7 @@ function showSuccessPopup() {
 
 const form = document.getElementById("contact-form");
 const responseMessage = document.getElementById("response-message");
-const scriptURL = "YOUR_WEB_APP_URL"; // Replace with your deployed Apps Script URL
+const scriptURL = "https://script.google.com/macros/s/AKfycbyivyy7NQDQo9FYDLK6bUz6-3BQIWJZIMt6uXLgcO2MIRarB_uWo3YMrYSUN9lnKBAwjg/exec"; // Replace with your deployed Apps Script URL
 const mobileInput = document.getElementById("number");
 
 // Real-time mobile number check
@@ -106,8 +106,8 @@ mobileInput.addEventListener("blur", () => {
   .then(res => res.text())
   .then(text => {
     if (text === "already_registered") {
-      responseMessage.innerHTML = "This mobile number is already registered!";
-      responseMessage.style.color = "orange";
+      responseMessage.innerHTML = "Already Registered!";
+      responseMessage.style.color = "yellow";
     } else {
       responseMessage.innerHTML = ""; // Clear message if not registered
     }
@@ -135,8 +135,8 @@ form.addEventListener("submit", (e) => {
       responseMessage.style.color = "green";
       form.reset();
     } else if (text === "already_registered") {
-      responseMessage.innerHTML = "Mobile number already registered!";
-      responseMessage.style.color = "orange";
+      responseMessage.innerHTML = "Already Registered!";
+      responseMessage.style.color = "yellow";
     } else {
       responseMessage.innerHTML = "Try Again!";
       responseMessage.style.color = "red";
@@ -148,3 +148,4 @@ form.addEventListener("submit", (e) => {
     responseMessage.style.color = "red";
   });
 });
+
