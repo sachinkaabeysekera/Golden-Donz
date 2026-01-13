@@ -88,7 +88,7 @@ function showSuccessPopup() {
 
 const form = document.getElementById("contact-form");
 const responseMessage = document.getElementById("response-message");
-const scriptURL = "https://script.google.com/macros/s/AKfycbyivyy7NQDQo9FYDLK6bUz6-3BQIWJZIMt6uXLgcO2MIRarB_uWo3YMrYSUN9lnKBAwjg/exec"; // Replace with your deployed Apps Script URL
+const scriptURL = "https://script.google.com/macros/s/AKfycbzWm9G74DNji6tOfPXkzZ6Tg1v2-3OGNfmbXwFLhfWsgtmsjBeUsMKLr_MTiK4QjGHbJg/exec"; // Replace with your deployed Apps Script URL
 const mobileInput = document.getElementById("number");
 
 // Real-time mobile number check
@@ -148,4 +148,5 @@ form.addEventListener("submit", (e) => {
     responseMessage.style.color = "red";
   });
 });
+
 
