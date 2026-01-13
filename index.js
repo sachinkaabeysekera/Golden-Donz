@@ -88,15 +88,41 @@ function showSuccessPopup() {
 
 const form = document.getElementById("contact-form");
 const responseMessage = document.getElementById("response-message");
+const scriptURL = "YOUR_WEB_APP_URL"; // Replace with your deployed Apps Script URL
+const mobileInput = document.getElementById("number");
 
-// Replace with your deployed Web App URL
-const scriptURL = "https://script.google.com/macros/s/AKfycbyivyy7NQDQo9FYDLK6bUz6-3BQIWJZIMt6uXLgcO2MIRarB_uWo3YMrYSUN9lnKBAwjg/exec";
+// Real-time mobile number check
+mobileInput.addEventListener("blur", () => {
+  const number = mobileInput.value.trim();
+  if (!number) return;
 
-form.addEventListener("submit", e => {
+  const formData = new FormData();
+  formData.append("Mobile Phone", number);
+
+  fetch(scriptURL, {
+    method: "POST",
+    body: formData
+  })
+  .then(res => res.text())
+  .then(text => {
+    if (text === "already_registered") {
+      responseMessage.innerHTML = "This mobile number is already registered!";
+      responseMessage.style.color = "orange";
+    } else {
+      responseMessage.innerHTML = ""; // Clear message if not registered
+    }
+  })
+  .catch(err => {
+    console.error("Error checking mobile number:", err);
+  });
+});
+
+// Normal form submission
+form.addEventListener("submit", (e) => {
   e.preventDefault();
 
-  // Add timestamp
-  document.getElementById("timestamp").value = new Date().toISOString();
+  // Set timestamp
+  document.getElementById('timestamp').value = new Date().toISOString();
 
   fetch(scriptURL, {
     method: "POST",
@@ -104,26 +130,21 @@ form.addEventListener("submit", e => {
   })
   .then(res => res.text())
   .then(text => {
-    console.log("Server response:", text);
-
     if (text === "registered_successfully") {
       responseMessage.innerHTML = "Registered Successfully!";
       responseMessage.style.color = "green";
       form.reset();
     } else if (text === "already_registered") {
-      responseMessage.innerHTML = "Already Registered!";
-      responseMessage.style.color = "yellow";
+      responseMessage.innerHTML = "Mobile number already registered!";
+      responseMessage.style.color = "orange";
     } else {
       responseMessage.innerHTML = "Try Again!";
       responseMessage.style.color = "red";
     }
   })
   .catch(err => {
-    console.error("Fetch error:", err);
+    console.error("Form submission error:", err);
     responseMessage.innerHTML = "Try Again!";
     responseMessage.style.color = "red";
   });
 });
-
-
-
