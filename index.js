@@ -90,11 +90,12 @@ const form = document.getElementById("contact-form");
 const responseMessage = document.getElementById("response-message");
 
 // Replace with your deployed Web App URL
-const scriptURL = "https://script.google.com/macros/s/AKfycbyCZG4k2PAkxAAxF53660bTIye_krWNkfRWAwxGru0ion0bPruYXtn_tn1qYvXAB-rt2g/exec";
+const scriptURL = "YOUR_WEB_APP_URL";
 
 form.addEventListener("submit", e => {
   e.preventDefault();
 
+  // Add timestamp
   document.getElementById("timestamp").value = new Date().toISOString();
 
   fetch(scriptURL, {
@@ -111,7 +112,7 @@ form.addEventListener("submit", e => {
       form.reset();
     } else if (text === "already_registered") {
       responseMessage.innerHTML = "Mobile number already registered!";
-      responseMessage.style.color = "yellow";
+      responseMessage.style.color = "orange";
     } else {
       responseMessage.innerHTML = "Try Again!";
       responseMessage.style.color = "red";
