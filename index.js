@@ -90,7 +90,7 @@ const form = document.getElementById("contact-form");
 const responseMessage = document.getElementById("response-message");
 
 // Replace with your deployed Web App URL
-const scriptURL = "YOUR_WEB_APP_URL";
+const scriptURL = "https://script.google.com/macros/s/AKfycbyCZG4k2PAkxAAxF53660bTIye_krWNkfRWAwxGru0ion0bPruYXtn_tn1qYvXAB-rt2g/exec";
 
 form.addEventListener("submit", e => {
   e.preventDefault();
@@ -124,3 +124,4 @@ form.addEventListener("submit", e => {
     responseMessage.style.color = "red";
   });
 });
+
