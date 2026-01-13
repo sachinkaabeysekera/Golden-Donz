@@ -90,7 +90,7 @@ const form = document.getElementById("contact-form");
 const responseMessage = document.getElementById("response-message");
 
 // Replace with your deployed Web App URL
-const scriptURL = "https://script.google.com/macros/s/AKfycbyCZG4k2PAkxAAxF53660bTIye_krWNkfRWAwxGru0ion0bPruYXtn_tn1qYvXAB-rt2g/exec";
+const scriptURL = "https://script.google.com/macros/s/AKfycbyivyy7NQDQo9FYDLK6bUz6-3BQIWJZIMt6uXLgcO2MIRarB_uWo3YMrYSUN9lnKBAwjg/exec";
 
 form.addEventListener("submit", e => {
   e.preventDefault();
@@ -124,4 +124,5 @@ form.addEventListener("submit", e => {
     responseMessage.style.color = "red";
   });
 });
+
 
